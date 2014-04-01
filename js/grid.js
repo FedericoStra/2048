@@ -33,6 +33,19 @@ Grid.prototype.fromState = function (state) {
   return cells;
 };
 
+// Get the maximum tile value
+Grid.prototype.getMaxValue = function () {
+  var value = 2;
+
+  this.eachCell(function (x, y, tile) {
+    if (tile && tile.value > value) {
+      value = tile.value;
+    }
+  });
+
+  return value;
+}
+
 // Find the first available random position
 Grid.prototype.randomAvailableCell = function () {
   var cells = this.availableCells();
